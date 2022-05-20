@@ -43,6 +43,13 @@ int main()
 		printf("THE SERVER HAS ACCEPTED A NEW CONNECTION \n");
 		int new_sock = sAcceptSocket;
 		
+		iRecv = recv(new_sock, RecvBuffer, iRecvBuffer, 0);
+		// comparing strings to message received in the buffer in order to determine  the service requested by the client
+		int ch1 = strcmp(RecvBuffer,"Book");
+		int ch2 = strcmp(RecvBuffer,"Cancel");
+		int ch3 = strcmp(RecvBuffer,"details");
+		
+		
 	}
 	
 }
