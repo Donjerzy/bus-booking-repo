@@ -4,7 +4,15 @@
 
 booking()
 {
-	return 0;
+
+	printf("These are the seats in our buses. \n");
+      printf(" [1]    [2]   | |    [Driver]\n");
+	printf("  ---------------------------------\n");
+	printf(" [3]    [4]   | |    [5]   [6]\n");
+	printf(" [7]    [8]   | |    [9]   [10]\n");
+	printf(" [11]   [12]  | |    [13]  [14]\n");
+	printf(" [15]   [16]  | |    [17]  [18]\n");
+	printf(" [19]   [20]  | |    [21]  [22]\n");
 }
 
 cancel(){
