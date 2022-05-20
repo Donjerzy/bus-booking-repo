@@ -50,6 +50,12 @@ int main()
 		int ch3 = strcmp(RecvBuffer,"details");
 		
 		
+		
+		
 	}
+	
+	return 0;
+
+
 	
 }
