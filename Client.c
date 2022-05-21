@@ -39,16 +39,26 @@ booking()
 	
 	printf("The following seats below have been booked:: \n" );
 
-	for(k =0;k<=23;k++)
+	for(k=0;k<=23;k++)
 	{
+		
 		iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
 		printf("%s , ",RecvBuffer);
+	
 		y = strcmp(RecvBuffer,"none of the seats have been booked \n");
+	//	int zgw =  strcmp(RecvBuffer,"I am done \n");
+	
+		
 		if(y==0)
 		{
 			break;
 		}
 		
+	/*	if(zgw == 0)
+		{
+			break;
+		} */
+	
 	}
 	int chair;
 	printf("Enter the seat you wish to book \n");
@@ -137,12 +147,13 @@ booking()
 	// sending last name to server
 	iSend = send(TCPClientSocket,lname, iSenderBuffer, 0);
 	
+	char ticNo[512];
 	// receiving confirmation (ticket_no)
-	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
-	int ticko = *(unsigned int*)(RecvBuffer);
+	iRecv = recv(TCPClientSocket,ticNo, iRecvBuffer, 0);
+	int ticko = *(unsigned int*)(ticNo);
 	
-	printf("You have successfully booked the seat, here is your ticket number:: %d",ticko);
-	iCloseSocket = closesocket(TCPClientSocket);
+	printf("You have successfully booked the seat, here is your ticket number:: %d \n",ticko);
+	return 0;
 	
 	
 	
@@ -184,22 +195,14 @@ cancel(){
 	if(com == 0)
 	{
 		printf("Your booking has successfully been cancelled \n");
-		printf("Thank you and bye?\n");
-		iCloseSocket = closesocket(TCPClientSocket);
-		exit(0);
 	}else if(notcom == 0)
 	{
 		printf("Your booking does not exist or you have entered wrong details :o \n");
-		printf("Thank you and bye\n");
-		iCloseSocket = closesocket(TCPClientSocket);
-		exit(0);
 	}
 
 	return 0;
 }else{
-	printf("Thank you and bye?\n");
-	iCloseSocket = closesocket(TCPClientSocket);
-	exit(0);
+		return 0;
 }
 
 }
@@ -240,22 +243,10 @@ details(){
 	printf("Last Name: %s \n",RecvBuffer);
 	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
 	printf("Mobile number: %s \n",RecvBuffer);
-	printf("Thank you and bye :)");
-	iCloseSocket = closesocket(TCPClientSocket);
-		exit(0);
 	}else if(notcom == 0)
 	{
 		printf("Your booking does not exist or you have entered wrong details :o \n");
-		printf("Thank you and bye\n");
-		iCloseSocket = closesocket(TCPClientSocket);
-		exit(0);
 	}
-	
-	
-	
-	
-
-	
 	return 0;
 }
 
@@ -274,8 +265,8 @@ int main()
 	printf("THE CLIENT HAS SUCCESSFULLY CONNECTED TO THE SERVER \n");
 	
 	
-	
-	
+	continu: ;
+	int cont;
 	
 	int choice; // to store customer service choice
 	printf("Welcome to the bus booking section \n Enter 1: To book a seat 2: To cancel a seat 3:View booked ticket details \n");
@@ -291,5 +282,20 @@ int main()
 		details();
 	}
 	
+	printf("Are you done? If yes enter 1 if no enter 0 \n");
+	int ch;
+	scanf("%d",&ch);
+	if(ch==1)
+	{
+		printf("Thank you for using my bus booking platform, Goodbye :) \n");
+		iCloseSocket = closesocket(TCPClientSocket);
+		exit(0);
+	}else if(ch==0)
+	{
+	 char SenderBuffer[512] = "cont";
+	//Sending don't terminate connection to the server (details)
+	iSend = send(TCPClientSocket, SenderBuffer, iSenderBuffer, 0);
+	goto continu;	
+	}
 	return 0;
 }
