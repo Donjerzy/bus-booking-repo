@@ -154,10 +154,108 @@ booking()
 }
 
 cancel(){
+	char SenderBuffer[512] ="Cancel";
+    //Sending Data to the server (booking)
+	iSend = send(TCPClientSocket, SenderBuffer, iSenderBuffer, 0);
+	printf("What is the seat you had earlier booked? \n");
+	int seat;
+	scanf("%d",&seat);
+	printf("What is your ticket number ?\n");
+	int ticko;
+	scanf("%d",&ticko);
+	printf("Are you sure you want to cancel this seat? Enter 1 for yes or 2 for no \n");
+	int ch;
+	scanf("%d",&ch);
+	if(ch==1)
+	{
+	// sending booking details to server for cancellation
+	char ticketnum[512];
+	char seatNo[512];
+	memcpy(seatNo, (char*)&seat,sizeof(unsigned int));
+	memcpy(ticketnum, (char*)&ticko,sizeof(unsigned int));
+	// sending ticket_no to server
+	iSend = send(TCPClientSocket,ticketnum, iSenderBuffer, 0);
+	//sending seat_no to server
+	iSend = send(TCPClientSocket,seatNo, iSenderBuffer, 0);
+	// receiving confirmation/denial
+	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
+	int com = strcmp(RecvBuffer,"done");
+	int notcom = strcmp(RecvBuffer,"fail");
+	if(com == 0)
+	{
+		printf("Your booking has successfully been cancelled \n");
+		printf("Thank you and bye?\n");
+		iCloseSocket = closesocket(TCPClientSocket);
+		exit(0);
+	}else if(notcom == 0)
+	{
+		printf("Your booking does not exist or you have entered wrong details :o \n");
+		printf("Thank you and bye\n");
+		iCloseSocket = closesocket(TCPClientSocket);
+		exit(0);
+	}
+
 	return 0;
+}else{
+	printf("Thank you and bye?\n");
+	iCloseSocket = closesocket(TCPClientSocket);
+	exit(0);
+}
+
 }
 
 details(){
+	char SenderBuffer[512] ="details";
+    //Sending Data to the server (details)
+	iSend = send(TCPClientSocket, SenderBuffer, iSenderBuffer, 0);
+	printf("What is the seat you had earlier booked? \n");
+	int seat;
+	scanf("%d",&seat);
+	printf("What is your ticket number ?\n");
+	int ticko;
+	scanf("%d",&ticko);
+	
+	
+	// sending booking details to server 
+	char ticketnum[512];
+	char seatNo[512];
+	memcpy(seatNo, (char*)&seat,sizeof(unsigned int));
+	memcpy(ticketnum, (char*)&ticko,sizeof(unsigned int));
+	// sending ticket_no to server
+	iSend = send(TCPClientSocket,ticketnum, iSenderBuffer, 0);
+	//sending seat_no to server
+	iSend = send(TCPClientSocket,seatNo, iSenderBuffer, 0);
+	// receiving confirmation/denial
+	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
+	
+	int com = strcmp(RecvBuffer,"done");
+	int notcom = strcmp(RecvBuffer,"fail");
+	if(com == 0)
+	{
+	printf("The following details are associated with the booking \n");
+	// receiving confirmation/denial
+	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
+	printf("First Name: %s \n",RecvBuffer);
+	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
+	printf("Last Name: %s \n",RecvBuffer);
+	iRecv = recv(TCPClientSocket,RecvBuffer, iRecvBuffer, 0);
+	printf("Mobile number: %s \n",RecvBuffer);
+	printf("Thank you and bye :)");
+	iCloseSocket = closesocket(TCPClientSocket);
+		exit(0);
+	}else if(notcom == 0)
+	{
+		printf("Your booking does not exist or you have entered wrong details :o \n");
+		printf("Thank you and bye\n");
+		iCloseSocket = closesocket(TCPClientSocket);
+		exit(0);
+	}
+	
+	
+	
+	
+
+	
 	return 0;
 }
 
