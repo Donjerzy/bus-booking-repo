@@ -132,14 +132,20 @@ int book(int y)
 				bul = 1;
 			}
 }
+	
+
 	if(k==23 && bul ==0)
 	{
 		char none[512] = "none of the seats have been booked \n";
 		iSend = send(y,none, iSenderBuffer, 0);
+	}else if(k==23 && bul ==1)
+	{
+		char dn[512] = "\n";
+		iSend = send(y,dn, iSenderBuffer, 0);
 	}
 	}
 		k = 0;
-		
+		bul= 0;
 		// receiving booking details
 		
 		printf("RECEIVING CUSTOMER DETAILS TO FACILITATE BOOKING \n");

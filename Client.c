@@ -46,7 +46,7 @@ booking()
 		printf("%s , ",RecvBuffer);
 	
 		y = strcmp(RecvBuffer,"none of the seats have been booked \n");
-	//	int zgw =  strcmp(RecvBuffer,"I am done \n");
+		int zgw =  strcmp(RecvBuffer,"\n");
 	
 		
 		if(y==0)
@@ -54,10 +54,10 @@ booking()
 			break;
 		}
 		
-	/*	if(zgw == 0)
+		if(zgw == 0)
 		{
 			break;
-		} */
+		} 
 	
 	}
 	int chair;
