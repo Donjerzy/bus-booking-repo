@@ -30,7 +30,7 @@ struct bus{
 	int iCloseSocket;
 
 	
-void book(int y)
+int book(int y)
 {
 	int v=0;
 	int redo=0;
@@ -131,7 +131,7 @@ void book(int y)
 				iSend = send(y,twenty_two, iSenderBuffer, 0);
 				bul = 1;
 			}
-		}
+}
 	if(k==23 && bul ==0)
 	{
 		char none[512] = "none of the seats have been booked \n";
@@ -211,20 +211,17 @@ void book(int y)
 	person[i].ticket_no = randdomized;
 	printf("I HAVE GENERATED THE FOLLOWING TICKET NUMBER :: %d \n",randdomized);
 	printf("I HAVE STORED THE FOLLOWING TICKET NUMBER :: %d \n",person[i].ticket_no);
+	
+	
 	char ticketnum[512];
 	memcpy(ticketnum, (char*)&randdomized,sizeof(unsigned int));
 	
 	int foll =  *(unsigned int*)(ticketnum);
+
 	
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
-	
-	iCloseSocket = closesocket(y);
-	
-	
-	 	
-	 	
-		
+			
 	}else if(two == 0)
 	{
 		person[i].seat = 2;
@@ -266,7 +263,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+
 		
 	}else if(three==0)
 	{
@@ -309,7 +306,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+
 	} else if(four == 0)
 	{
 		person[i].seat = 4;
@@ -351,7 +348,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);	
+		
 	}else if(five == 0)
 	{
 		person[i].seat = 5;
@@ -393,7 +390,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(six == 0)
 	{
 		person[i].seat = 6;
@@ -435,7 +432,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if( seven == 0)
 	{
 		person[i].seat = 7;
@@ -477,7 +474,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(eight == 0)
 	{
 		person[i].seat = 8;
@@ -519,7 +516,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(nine == 0)
 	{
 		person[i].seat = 9;
@@ -561,7 +558,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(ten == 0)
 	{
 		person[i].seat = 10;
@@ -603,7 +600,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(eleven == 0)
 	{
 		person[i].seat = 11;
@@ -645,7 +642,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(twelve == 0)
 	{
 		person[i].seat = 12;
@@ -687,7 +684,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(thirteen == 0)
 	{
 		person[i].seat = 13;
@@ -729,7 +726,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(fourteen == 0)
 	{
 		person[i].seat = 14;
@@ -771,7 +768,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(fifteen == 0)
 	{
 		person[i].seat = 15;
@@ -813,7 +810,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+
 	}else if(sixteen == 0)
 	{
 		person[i].seat = 16;
@@ -855,7 +852,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(sevteen == 0)
 	{
 			person[i].seat = 17;
@@ -897,7 +894,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);	
+	
 	}else if(eighteen == 0)
 	{
 			person[i].seat = 18;
@@ -930,7 +927,6 @@ void book(int y)
 	}
 	person[i].ticket_no = randdomized;
 	printf("I HAVE GENERATED THE FOLLOWING TICKET NUMBER :: %d \n",randdomized);
-	printf("I HAVE STORED THE FOLLOWING TICKET NUMBER :: %d \n",person[i].ticket_no);
 	char ticketnum[512];
 	memcpy(ticketnum, (char*)&randdomized,sizeof(unsigned int));
 	
@@ -939,7 +935,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+	
 	}else if(nineteen == 0)
 	{
 			person[i].seat = 19;
@@ -981,7 +977,7 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
+
 	}else if(twenty == 0)
 	{
 			person[i].seat = 20;
@@ -1019,11 +1015,11 @@ void book(int y)
 	memcpy(ticketnum, (char*)&randdomized,sizeof(unsigned int));
 	
 	int foll =  *(unsigned int*)(ticketnum);
-	
+//	printf("THIS IS WHAT CLIENT SHOULD SEE AFTER CONVERSION %d",foll);
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
-	
-	iCloseSocket = closesocket(y);
+//	printf("THIS IS WHAT I HAVE SENT TO CLIENT:: %s \n",ticketnum);
+
 	}else if(twenty_one == 0)
 	{
 			person[i].seat = 21;
@@ -1065,7 +1061,6 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
 	}else if(twenty_two)
 	{
 			person[i].seat = 22;
@@ -1107,14 +1102,13 @@ void book(int y)
 	//sending ticket number to client
 	iSend = send(y,ticketnum, iSenderBuffer, 0);
 	
-	iCloseSocket = closesocket(y);
 	}
-	
+  return 0;	
 }
 
 
 
-void cancel(int y)
+int cancel(int y)
 {
 	printf("THE USER WANTS TO CANCEL AN EXISTING BOOKING \n");
 	
@@ -1151,10 +1145,10 @@ void cancel(int y)
 			iSend = send(y,fail, iSenderBuffer, 0);
 	}
 	
-	iCloseSocket = closesocket(y);
+	return 0;
 }
 
-void details(int y)
+int details(int y)
 {
 	printf("USER WANTS TO VIEW THEIR BOOKING DETAILS \n");
 	// receiving ticket_no
@@ -1194,7 +1188,7 @@ void details(int y)
 			iSend = send(y,fail, iSenderBuffer, 0);
 	}
 	
-		iCloseSocket = closesocket(y);
+		return 0;
 	
 }
 
@@ -1230,6 +1224,7 @@ int main()
 		printf("THE SERVER HAS ACCEPTED A NEW CONNECTION \n");
 		int new_sock = sAcceptSocket;
 		
+		continu:
 		iRecv = recv(new_sock, RecvBuffer, iRecvBuffer, 0);
 		// comparing strings to message received in the buffer in order to determine  the service requested by the client
 		int ch1 = strcmp(RecvBuffer,"Book");
@@ -1247,7 +1242,14 @@ int main()
 			details(new_sock);
 		}
 		
-		
+		iRecv = recv(new_sock, RecvBuffer, iRecvBuffer, 0);
+		int cont = strcmp(RecvBuffer,"cont");
+		if(cont == 0)
+		{
+			goto continu;
+		}else {
+				iCloseSocket = closesocket(new_sock);
+		}
 	}
 	
 	return 0;
